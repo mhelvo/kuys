@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>nl.spindltree</groupId>
-        <artifactId>kuis-poc</artifactId>
+        <artifactId>kuys-poc</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>kuis-annotations</artifactId>
+    <artifactId>kuys-annotations</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

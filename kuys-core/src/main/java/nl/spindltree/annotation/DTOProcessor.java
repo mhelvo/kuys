@@ -82,13 +82,16 @@ public class DTOProcessor extends AbstractProcessor {
 
         Map<String, Object> input = new HashMap<String, Object>();
         input.put("className", className);
+        input.put("className", className);
         String packageName = null;
         int lastDot = className.lastIndexOf('.');
         if (lastDot > 0) {
             packageName = className.substring(0, lastDot);
         }
+        String simpleClassName = className.substring(lastDot + 1);
 
         input.put("packageName", packageName);
+        input.put("simpleClassName", simpleClassName);
 
 //        input.put("exampleObject", new ValueExampleObject("Java object", "me"));
 //

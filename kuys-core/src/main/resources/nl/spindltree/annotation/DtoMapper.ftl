@@ -3,7 +3,7 @@ package ${packageName};
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class OrderDtoMapper {
+public class ${simpleClassName} {
 
     public static OrderDto toOrderDto(Order order) {
         return new OrderDto(
