@@ -28,28 +28,33 @@ public class DTOProcessor extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         for (TypeElement annotation : annotations) {
             Set<? extends Element> annotatedElements = roundEnv.getElementsAnnotatedWith(annotation);
-            Element first = annotatedElements.stream().findFirst().get();
-            TypeElement classElement = (TypeElement) first;
-
-            try {
-                writeDtoFile(classElement);
-                writeDtoMapperFile(classElement);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            annotatedElements.stream()
+                    .map(TypeElement.class::cast)
+                    .forEach(this::generateForElement);
         }
         return true;
+    }
+
+    private void generateForElement(TypeElement classElement) {
+        try {
+            writeDtoFile(classElement);
+            writeDtoMapperFile(classElement);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void writeDtoMapperFile(TypeElement classElement) throws Exception {
         ClassInfo classInfo = new ClassInfo(classElement, "DtoMapper");
         JavaFileObject builderFile = processingEnv.getFiler().createSourceFile(classInfo.getClassName());
         Template template1 = template("nl/spindltree/annotation/DtoMapper.ftl");
+
         Map<String, Object> input = new HashMap<>(classInfo.toMap());
         String dtoClassName = classElement.asType().toString() + "Dto";
         input.put("dtoClassName", dtoClassName);
         input.put("simpleDtoClassName", simpleClassName(dtoClassName));
         input.put("f", functionSet());
+
         try (PrintWriter out = new PrintWriter(builderFile.openWriter())) {
             template1.process(input, out);
         }
@@ -59,7 +64,9 @@ public class DTOProcessor extends AbstractProcessor {
         ClassInfo classInfo = new ClassInfo(classElement, "Dto");
         JavaFileObject builderFile = processingEnv.getFiler().createSourceFile(classInfo.getClassName());
         Template template = template("nl/spindltree/annotation/Dto.ftl");
+
         Map<String, Object> input = new HashMap<>(classInfo.toMap());
+
         try (PrintWriter out = new PrintWriter(builderFile.openWriter())) {
             template.process(input, out);
         }
