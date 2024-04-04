@@ -20,7 +20,7 @@ import static nl.spindltree.util.ClassHelper.simpleClassName;
 import static nl.spindltree.util.TemplateHelper.functionSet;
 import static nl.spindltree.util.TemplateHelper.template;
 
-@SupportedAnnotationTypes("nl.spindltree.kuis.DTO")
+@SupportedAnnotationTypes("nl.spindltree.kuis.Dto")
 @AutoService(Processor.class)
 public class DTOProcessor extends AbstractProcessor {
 
