@@ -7,7 +7,6 @@ import freemarker.template.Version;
 import lombok.experimental.UtilityClass;
 import nl.spindltree.annotation.processor.DTOProcessor;
 
-import javax.lang.model.element.VariableElement;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,35 +34,10 @@ public class TemplateHelper {
 
     private static String toVariableName(String input) {
         if (input == null || input.isEmpty()) {
-            return input; // Return input as is if it's null or empty
+            return input;
         } else {
-            char firstChar = Character.toLowerCase(input.charAt(0)); // Convert the first character to lowercase
-            return firstChar + input.substring(1); // Concatenate the modified first character with the rest of the string
+            char firstChar = Character.toLowerCase(input.charAt(0));
+            return firstChar + input.substring(1);
         }
     }
-
-    private static String generateGetterMethodName(VariableElement variableElement) {
-        // Controleer of het VariableElement niet leeg is
-        if (variableElement == null) {
-            throw new IllegalArgumentException("VariableElement mag niet leeg zijn");
-        }
-
-        // Haal de naam van het veld op
-        String fieldName = variableElement.getSimpleName().toString();
-
-        // Bepaal of het veld een boolean is
-        boolean isBoolean = variableElement.asType().toString().equals("boolean");
-
-        // Genereer de getter-methode naam op basis van het veldtype
-        String getterName;
-        if (isBoolean && fieldName.startsWith("is")) {
-            getterName = fieldName;
-        } else {
-            getterName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
-        }
-
-        return getterName;
-    }
-
-
 }
