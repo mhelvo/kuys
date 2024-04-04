@@ -31,8 +31,10 @@ public class ClassInfo {
 
         String baseClassName = classType.toString();
         String baseSimpleClassName = baseClassName.substring(packageName.length() + 1);
+        createMap(classElement, baseClassName, baseSimpleClassName);
+    }
 
-
+    private void createMap(TypeElement classElement, String baseClassName, String baseSimpleClassName) {
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("className", className);
         map.put("packageName", packageName);

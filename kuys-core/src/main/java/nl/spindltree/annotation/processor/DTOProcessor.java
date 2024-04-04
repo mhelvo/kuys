@@ -10,7 +10,6 @@ import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
-import javax.lang.model.type.TypeMirror;
 import javax.tools.JavaFileObject;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -28,27 +27,17 @@ public class DTOProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         for (TypeElement annotation : annotations) {
-
             Set<? extends Element> annotatedElements = roundEnv.getElementsAnnotatedWith(annotation);
-
             Element first = annotatedElements.stream().findFirst().get();
-
             TypeElement classElement = (TypeElement) first;
-
-            // Haal het TypeMirror van de klasse op
-            TypeMirror classType = classElement.asType();
 
             try {
                 writeDtoFile(classElement);
                 writeDtoMapperFile(classElement);
             } catch (Exception e) {
-                e.printStackTrace();
                 throw new RuntimeException(e);
             }
-
-
         }
-
         return true;
     }
 
