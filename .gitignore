@@ -16,6 +16,7 @@ build/
 
 # Maven files
 target/
+**/target/
 
 # Eclipse files
 .project
