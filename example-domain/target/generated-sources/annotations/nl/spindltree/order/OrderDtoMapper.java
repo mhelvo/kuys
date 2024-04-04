@@ -5,18 +5,20 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class OrderDtoMapper {
 
-    public static OrderDto toOrderDto(Order order) {
-        return new OrderDto(
-            order.getId(),
-            order.getDescription(),
-            order.getStatus());
-    }
+    public static nl.spindltree.order.OrderDto toOrderDto(nl.spindltree.order.Order order) {
+        return new nl.spindltree.order.OrderDto(
+                    order.getId(), 
+                    order.getDescription(), 
+                    order.getStatus()
+                );
 
-    public static Order toOrder(OrderDto orderDto) {
-        Order order = new Order();
-        order.setId(orderDto.getId());
-        order.setDescription(order.getDescription());
-        order.setStatus(orderDto.getStatus());
+}
+
+    public static nl.spindltree.order.Order toOrder(nl.spindltree.order.OrderDto orderDto) {
+        nl.spindltree.order.Order order = new nl.spindltree.order.Order();
+            order.setId(orderDto.getId());
+            order.setDescription(orderDto.getDescription());
+            order.setStatus(orderDto.getStatus());
         return order;
     }
 

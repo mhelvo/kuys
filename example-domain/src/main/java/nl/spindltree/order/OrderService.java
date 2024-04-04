@@ -1,14 +1,19 @@
 package nl.spindltree.order;
 
+import static nl.spindltree.order.OrderDtoMapper.toOrder;
+import static nl.spindltree.order.OrderDtoMapper.toOrderDto;
+
 public class OrderService {
 
 
     public OrderDto createOrder(OrderDto orderDto) {
         //to Order
+        Order order = toOrder(orderDto);
 
-        //Return OrderDto
+        //save
 
-        return null;
+
+        return toOrderDto(order);
     }
 
     public OrderDto closeOrder(long id) {

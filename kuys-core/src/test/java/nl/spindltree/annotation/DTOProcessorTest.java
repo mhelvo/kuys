@@ -4,6 +4,7 @@ package nl.spindltree.annotation;
 import com.google.common.collect.ImmutableList;
 import com.google.testing.compile.Compilation;
 import com.google.testing.compile.JavaFileObjects;
+import nl.spindltree.annotation.processor.DTOProcessor;
 
 import javax.tools.JavaFileObject;
 import java.io.File;
