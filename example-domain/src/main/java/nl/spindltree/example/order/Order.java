@@ -1,4 +1,4 @@
-package nl.spindltree.order;
+package nl.spindltree.example.order;
 
 import lombok.Data;
 import nl.spindltree.kuis.Dto;

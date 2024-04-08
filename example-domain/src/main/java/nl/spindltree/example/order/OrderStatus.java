@@ -1,4 +1,4 @@
-package nl.spindltree.order;
+package nl.spindltree.example.order;
 
 public enum OrderStatus {
     OPEN,
