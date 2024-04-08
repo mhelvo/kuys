@@ -1,8 +1,12 @@
-package nl.spindltree.order;
+package nl.spindltree.example.order;
 
-import static nl.spindltree.order.OrderDtoMapper.toOrder;
-import static nl.spindltree.order.OrderDtoMapper.toOrderDto;
+import javax.inject.Named;
 
+import static nl.spindltree.example.order.OrderDtoMapper.toOrder;
+import static nl.spindltree.example.order.OrderDtoMapper.toOrderDto;
+
+
+@Named
 public class OrderService {
 
 
