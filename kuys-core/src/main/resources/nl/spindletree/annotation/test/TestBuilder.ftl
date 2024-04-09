@@ -16,7 +16,7 @@ public class ${simpleClassName}  {
     }
 
     public static ${simpleClassName} initialize() {
-    return initialize(new ObjectMapper());
+        return initialize(new ObjectMapper());
     }
 
     public static ${simpleClassName} initialize(ObjectMapper objectMapper) {
@@ -41,10 +41,10 @@ public class ${simpleClassName}  {
     }
 
     <#list fields as field>
-        public ${simpleClassName} ${field.fieldName}(${field.fieldType} ${field.fieldName}){
+    public ${simpleClassName} ${field.fieldName}(${field.fieldType} ${field.fieldName}){
         this.${field.fieldName} = ${field.fieldName};
         return this;
     }
-    </#list>
 
+    </#list>
 }
