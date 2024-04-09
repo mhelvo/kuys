@@ -7,7 +7,7 @@ import static nl.spindltree.example.order.OrderDtoMapper.toOrderDto;
 
 
 @Named
-public class OrderService {
+class OrderService {
 
 
     public OrderDto createOrder(OrderDto orderDto) {

@@ -1,4 +1,4 @@
-package nl.spindltree.kuis;
+package nl.spindltree.kuis.domain;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,5 +7,5 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.SOURCE)
-public @interface Dto {
+public @interface BusinessEntity {
 }

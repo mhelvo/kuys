@@ -1,4 +1,4 @@
-package nl.spindltree.util;
+package nl.spindltree.kuys.support;
 
 
 import freemarker.template.SimpleScalar;

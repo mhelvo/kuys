@@ -1,13 +1,11 @@
-package nl.spindltree.annotation.processor;
+package nl.spindltree.kuys.domain.annotation.processor;
 
 import com.google.auto.service.AutoService;
 import freemarker.template.Template;
-import nl.spindltree.annotation.ClassInfo;
+import nl.spindltree.kuys.support.ClassInfo;
 
-import javax.annotation.processing.AbstractProcessor;
-import javax.annotation.processing.Processor;
-import javax.annotation.processing.RoundEnvironment;
-import javax.annotation.processing.SupportedAnnotationTypes;
+import javax.annotation.processing.*;
+import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.tools.JavaFileObject;
@@ -16,11 +14,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static nl.spindltree.util.ClassHelper.simpleClassName;
-import static nl.spindltree.util.TemplateHelper.functionSet;
-import static nl.spindltree.util.TemplateHelper.template;
+import static nl.spindltree.kuys.support.ClassHelper.simpleClassName;
+import static nl.spindltree.kuys.support.TemplateHelper.functionSet;
+import static nl.spindltree.kuys.support.TemplateHelper.template;
 
-@SupportedAnnotationTypes("nl.spindltree.kuis.Dto")
+@SupportedSourceVersion(SourceVersion.RELEASE_21)
+@SupportedAnnotationTypes("nl.spindltree.kuis.domain.BusinessEntity")
 @AutoService(Processor.class)
 public class DTOProcessor extends AbstractProcessor {
 
@@ -47,7 +46,7 @@ public class DTOProcessor extends AbstractProcessor {
     private void writeDtoMapperFile(TypeElement classElement) throws Exception {
         ClassInfo classInfo = new ClassInfo(classElement, "DtoMapper");
         JavaFileObject builderFile = processingEnv.getFiler().createSourceFile(classInfo.getClassName());
-        Template template1 = template("nl/spindltree/annotation/DtoMapper.ftl");
+        Template template1 = template("nl/spindltree/annotation/domain/DtoMapper.ftl");
 
         Map<String, Object> input = new HashMap<>(classInfo.toMap());
         String dtoClassName = classElement.asType().toString() + "Dto";
@@ -63,7 +62,7 @@ public class DTOProcessor extends AbstractProcessor {
     private void writeDtoFile(TypeElement classElement) throws Exception {
         ClassInfo classInfo = new ClassInfo(classElement, "Dto");
         JavaFileObject builderFile = processingEnv.getFiler().createSourceFile(classInfo.getClassName());
-        Template template = template("nl/spindltree/annotation/Dto.ftl");
+        Template template = template("nl/spindltree/annotation/domain/Dto.ftl");
 
         Map<String, Object> input = new HashMap<>(classInfo.toMap());
 

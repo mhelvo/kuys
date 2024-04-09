@@ -1,17 +1,15 @@
-package nl.spindltree.util;
+package nl.spindltree.kuys.support;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 import lombok.experimental.UtilityClass;
-import nl.spindltree.annotation.processor.DTOProcessor;
+import nl.spindltree.kuys.domain.annotation.processor.DTOProcessor;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import static nl.spindltree.util.FunctionHelper.function;
 
 @UtilityClass
 public class TemplateHelper {
@@ -27,7 +25,7 @@ public class TemplateHelper {
 
     public static Map<String, Object> functionSet() {
         Map<String, Object> functionMap = new HashMap<>();
-        functionMap.put("toVariable", function(TemplateHelper::toVariableName));
+        functionMap.put("toVariable", FunctionHelper.function(TemplateHelper::toVariableName));
 
         return functionMap;
     }

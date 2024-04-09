@@ -1,9 +1,9 @@
 package nl.spindltree.example.order;
 
 import lombok.Data;
-import nl.spindltree.kuis.Dto;
+import nl.spindltree.kuis.domain.BusinessEntity;
 
-@Dto
+@BusinessEntity
 @Data
 public class Order {
     private long id;

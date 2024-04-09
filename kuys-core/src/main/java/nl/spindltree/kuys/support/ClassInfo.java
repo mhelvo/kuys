@@ -1,4 +1,4 @@
-package nl.spindltree.annotation;
+package nl.spindltree.kuys.support;
 
 import lombok.Getter;
 
@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static nl.spindltree.util.ClassHelper.*;
+import static nl.spindltree.kuys.support.ClassHelper.*;
 
 @Getter
 public class ClassInfo {
