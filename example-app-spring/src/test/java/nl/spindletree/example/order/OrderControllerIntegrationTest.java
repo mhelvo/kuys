@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static nl.spindletree.example.test.OrderTestBuilders.orderDto;
+import static org.assertj.core.api.Fail.fail;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -20,7 +21,6 @@ class OrderControllerIntegrationTest {
 
     @Autowired
     private ObjectMapper objectMapper;
-
 
     @Test
     public void testCreate() throws Exception {
@@ -35,6 +35,9 @@ class OrderControllerIntegrationTest {
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.description").value("Another description needed here!"))
                 .andExpect(jsonPath("$.status").value("OPEN"));
+
+
+        fail("Check new order in db");
     }
 
     private String toJson(OrderDto order) throws JsonProcessingException {

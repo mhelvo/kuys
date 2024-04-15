@@ -1,5 +1,7 @@
 package nl.spindletree.example.order;
 
+import lombok.RequiredArgsConstructor;
+
 import javax.inject.Named;
 
 import static nl.spindletree.example.order.OrderDtoMapper.toOrder;
@@ -7,17 +9,14 @@ import static nl.spindletree.example.order.OrderDtoMapper.toOrderDto;
 
 
 @Named
-class OrderService {
+@RequiredArgsConstructor
+public class OrderService {
+    private final OrderRepository orderRepository;
 
-
-    public OrderDto createOrder(OrderDto orderDto) {
-        //to Order
-        Order order = toOrder(orderDto);
-
-        //save
-
-
-        return toOrderDto(order);
+    public OrderDto createOrder(final OrderDto orderDto) {
+        final Order order = toOrder(orderDto);
+        final Order updatedOrder = orderRepository.save(order);
+        return toOrderDto(updatedOrder);
     }
 
     public OrderDto closeOrder(long id) {
