@@ -10,8 +10,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>example-domain</module>
-        <module>example-adapters-spring</module>
-        <module>example-app-spring</module>
+        <module>example-adapters-spring-sql</module>
+        <module>example-app-spring-sql</module>
+        <module>example-app-spring-mongodb</module>
         <module>kuys-core</module>
         <module>kuys-annotations</module>
     </modules>

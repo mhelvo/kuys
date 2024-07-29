@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: mongo-db
+  data:
+    mongodb:
+      username: someUser1!
+      password: dontGuess1!
+
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 4.4.0
