@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_0.xsd"
+                 version="2.0">
+
+    <entity class="nl.spindletree.example.order.Order" access="FIELD" name="OrderTable">
+        <attributes>
+            <id name="id">
+                <column name="id"/>
+                <generated-value strategy="IDENTITY"/>
+            </id>
+        </attributes>
+    </entity>
+
+
+</entity-mappings>

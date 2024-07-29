@@ -9,31 +9,35 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>example-domain</artifactId>
+    <artifactId>example-adapters-spring-sql</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
+        <springdoc.version>2.5.0</springdoc.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>nl.spindletree</groupId>
-            <artifactId>kuys-annotations</artifactId>
+            <artifactId>example-domain</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>nl.spindletree</groupId>
-            <artifactId>kuys-core</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>${jakarta.persistence-api.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
     </dependencies>
+
 
 </project>
