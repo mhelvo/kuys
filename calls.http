@@ -1,0 +1,10 @@
+
+#create new order
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "id": 1,
+  "description": "Another description needed here!",
+  "status": "OPEN"
+}
