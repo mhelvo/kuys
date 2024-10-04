@@ -8,6 +8,7 @@ import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.TypeMirror;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import static nl.spindletree.kuys.support.ClassHelper.*;
@@ -21,8 +22,6 @@ public class ClassInfo {
     private Map<String, Object> classInfoMap;
 
     public ClassInfo(TypeElement classElement, String Suffix) {
-
-
         TypeMirror classType = classElement.asType();
 
         className = classType.toString() + Suffix;
@@ -42,10 +41,11 @@ public class ClassInfo {
         map.put("baseClassName", baseClassName);
         map.put("baseSimpleClassName", baseSimpleClassName);
         map.put("fields", createFieldMap(classElement));
+
         this.classInfoMap = Collections.unmodifiableMap(map);
     }
 
-    private Object createFieldMap(TypeElement classElement) {
+    private List<Map<String, String>> createFieldMap(TypeElement classElement) {
         return classElement.getEnclosedElements().stream()
                 .filter(element -> ElementKind.FIELD == element.getKind())
                 .map(VariableElement.class::cast)
@@ -57,6 +57,7 @@ public class ClassInfo {
                 ))
                 .toList();
     }
+
 
     public Map<String, Object> toMap() {
         return classInfoMap;

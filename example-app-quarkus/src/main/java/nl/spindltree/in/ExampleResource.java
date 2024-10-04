@@ -9,7 +9,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import nl.spindletree.example.order.OrderDto;
-import nl.spindletree.example.order.OrderService;
+import nl.spindletree.example.order.OrderServiceAdapter;
 
 @Path("/orders")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -17,7 +17,7 @@ import nl.spindletree.example.order.OrderService;
 public class ExampleResource {
 
     @Inject
-    OrderService orderService;
+    OrderServiceAdapter orderService;
 
     @POST
     @Transactional

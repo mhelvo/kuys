@@ -15,6 +15,8 @@ import java.util.Map;
 import java.util.Set;
 
 import static nl.spindletree.kuys.support.ClassHelper.simpleClassName;
+import static nl.spindletree.kuys.support.Naming.DTO;
+import static nl.spindletree.kuys.support.Naming.DTO_MAPPER;
 import static nl.spindletree.kuys.support.TemplateHelper.functionSet;
 import static nl.spindletree.kuys.support.TemplateHelper.template;
 
@@ -44,12 +46,12 @@ public class DTOProcessor extends AbstractProcessor {
     }
 
     private void writeDtoMapperFile(TypeElement classElement) throws Exception {
-        ClassInfo classInfo = new ClassInfo(classElement, "DtoMapper");
+        ClassInfo classInfo = new ClassInfo(classElement, DTO_MAPPER);
         JavaFileObject builderFile = processingEnv.getFiler().createSourceFile(classInfo.getClassName());
         Template template1 = template("nl/spindletree/annotation/domain/DtoMapper.ftl");
 
         Map<String, Object> input = new HashMap<>(classInfo.toMap());
-        String dtoClassName = classElement.asType().toString() + "Dto";
+        String dtoClassName = classElement.asType().toString() + DTO;
         input.put("dtoClassName", dtoClassName);
         input.put("simpleDtoClassName", simpleClassName(dtoClassName));
         input.put("f", functionSet());
@@ -60,7 +62,7 @@ public class DTOProcessor extends AbstractProcessor {
     }
 
     private void writeDtoFile(TypeElement classElement) throws Exception {
-        ClassInfo classInfo = new ClassInfo(classElement, "Dto");
+        ClassInfo classInfo = new ClassInfo(classElement, DTO);
         JavaFileObject builderFile = processingEnv.getFiler().createSourceFile(classInfo.getClassName());
         Template template = template("nl/spindletree/annotation/domain/Dto.ftl");
 
